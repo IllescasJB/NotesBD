@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres_es
+    container_name: notes_db
+    ports:
+      - "5434:5432"
+    volumes:
+      - ${SQL_PATH}:/tmp/
+      - notes_database:/var/lib/postgresql/data
+    environment:
+      - "POSTGRES_PASSWORD=${SQL_PASSWORD}"
+volumes:
+  notes_database:
